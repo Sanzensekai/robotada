@@ -21,3 +21,7 @@ procedure Test_Path is
    Points2(2):=P2;
    Points3(3):=P3;
    Points4(4):=P4;
+
+   Path1.Value(Points1);
+
+   Path1.Draw(Path1,
