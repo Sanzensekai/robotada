@@ -24,4 +24,5 @@ procedure Test_Path is
 
    Path1.Value(Points1);
 
-   Path1.Draw(Path1,
+   Path1.Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
+				  --Ou pas. ^^'

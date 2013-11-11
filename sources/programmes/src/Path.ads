@@ -1,3 +1,5 @@
+with Interfaces; use Interfaces;
+
 package Path is
    type Object is private;
    Null_Path: constant Object;
@@ -13,13 +15,12 @@ package Path is
    procedure Add (Path: in out Object; P: Point);
    function Segment_Count (Path: in Object) return Natural;
    function Segment_Length (Path: in Object; Segment: in Positive) return Float;
-   procedure Draw (Path: in Object; Color: in Color_Type := Light_Green);
+   procedure Draw (Path: in Object; Color: in Color_Type := Light_Green); -- trouver comment définir Color_Type
 
 private
    subtype Count is Natural range 0..50;
    type Object (Size: Count := 0) is record
       Values: Points (1..Size);
    end record;
-   Null_Path : constant Object := (null_record);
+   Null_Path : constant Object := (null_record); -- à modifier, à regarder dans le cours
 end Path;
-*
