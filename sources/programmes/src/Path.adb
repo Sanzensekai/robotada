@@ -4,7 +4,8 @@ with Ada.Numerics.Generic_Elementary_Functions
 
    function Value(From: Points) return Object is
    begin
-      	Object.Values := Points
+      	Object.Values := Points;
+        Object.Size := 0;
 	return Object;
    end;
 
@@ -15,14 +16,15 @@ with Ada.Numerics.Generic_Elementary_Functions
    end;
 
    function "&" (Left: in Object; Right in Point) return Object is
-   	begin
+   begin
         Add(Left,Right);
 	return Left;
    end;
 
    function "&" (Left: in Point; Right in Object) return Object is
    begin
-        Add(Right,Left);
+      	Add(Right,Left);
+      	Object.Size := Object.Size+1;
 	return Right;
    end;
 
@@ -46,7 +48,9 @@ with Ada.Numerics.Generic_Elementary_Functions
 
    procedure Draw (Path: in Object; Color in Color_Type:= Light_Green) is
    begin
-
+      	for I in 1..Object.Size loop
+        Object.Values(I); -- Hard core d trouver un truc à mettre ici, j'y reviendrais demain.
+      	end loop;
    end;
 
    private
