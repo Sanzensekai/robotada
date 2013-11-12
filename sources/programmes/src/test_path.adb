@@ -1,10 +1,11 @@
-with Path
+with Path;
 
 procedure Test_Path is
    P1,P2,P3,P4 : Point;
    Points1 : Points;
    Path1 : Path;
 
+begin
    P1.X := 1.0;
    P1.Y := 1.0;
 
@@ -25,4 +26,5 @@ procedure Test_Path is
    Path1.Value(Points1);
 
    Path1.Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
-				  --Ou pas. ^^'
+                                  --Ou pas. ^^'
+end;

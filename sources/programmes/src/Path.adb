@@ -3,9 +3,9 @@ with Ada.Numerics.Generic_Elementary_Functions;
 package body Path is
 
    function Value(From: Points) return Object is
-   Obj : Object ;
-   Obj.Values := Points;
-   Obj.Size := 0;
+   Obj : Object ; -- Déclaration à revoir
+   Obj.Values := Points; -- Déclaration buggante
+   Obj.Size := 0; -- Déclaration buggante
    begin
 	return Obj;
    end;
@@ -31,7 +31,7 @@ package body Path is
 
    procedure Add (Path: in out Object; P: Point) is
    begin
-      Insert (P : in Path.Points);
+      Insert (P : in Path.Points); --
    end;
 
    function Segment_Count (Path: in Object) return Natural is
