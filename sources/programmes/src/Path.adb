@@ -1,11 +1,9 @@
 with Ada.Numerics.Generic_Elementary_Functions;
-
+use Ada.Numerics.Generic_Elementary_Functions;
 package body Path is
 
    function Value(From: Points) return Object is
-   Obj : Object ; -- Déclaration à revoir
-   Obj.Values := Points; -- Déclaration buggante
-   Obj.Size := 0; -- Déclaration buggante
+      Obj := Object'(Size => ,Values => Points); -- Déclaration à revoir
    begin
 	return Obj;
    end;

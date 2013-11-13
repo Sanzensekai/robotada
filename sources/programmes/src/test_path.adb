@@ -1,4 +1,5 @@
 with Path;
+use Path;
 
 procedure Test_Path is
    P1,P2,P3,P4 : Point;
