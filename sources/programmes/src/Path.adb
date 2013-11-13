@@ -1,10 +1,11 @@
 with Ada.Numerics.Generic_Elementary_Functions;
-use Ada.Numerics.Generic_Elementary_Functions;
+with Adagraph;
+
 package body Path is
 
    function Value(From: Points) return Object is
-      Obj := Object'(Size => ,Values => Points); -- Déclaration à revoir
    begin
+      	Obj := Object'(Size =>Points'Length ,Values => Points); -- Déclaration à revoir
 	return Obj;
    end;
 

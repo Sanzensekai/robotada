@@ -1,6 +1,8 @@
 with Interfaces; use Interfaces;
+with Adagraph; use Adagraph;
 
 package Path is
+
    type Object is private;
    Null_Path: constant Object;
    type Point is record
