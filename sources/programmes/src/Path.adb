@@ -1,36 +1,42 @@
+with Ada.Text_IO;
 with Ada.Numerics.Generic_Elementary_Functions;
+with Ada.Strings.Unbounded;
 with Adagraph;
+
+use Ada.Text_IO;
+use Ada.Strings.Unbounded;
+use Adagraph;
 
 package body Path is
 
    function Value(From: Points) return Object is
    begin
-      	Obj := Object'(Size =>Points'Length ,Values => Points); -- Déclaration à revoir
-	return Obj;
+      return Object'(Size => 0, Values => Points); -- trouver quoi
+      						  --mettre pour Size
    end;
 
    function "&" (Left: in Object; Right: in Object) return Object is
-   NewValues : Points := Left.Values & Right.Values;
    begin
-	return (Value(NewValues));
+      return Object'(Size => Left.Size+Right.Size,
+                     Values => Left.Values & Right.Values);
    end;
 
    function "&" (Left: in Object; Right: in Point) return Object is
    begin
-        Add(Left,Right);
+         Add(Left,Right);
+        Object.Size := Object.Size+1;
 	return Left;
    end;
 
    function "&" (Left: in Point; Right: in Object) return Object is
    begin
-      	Add(Right,Left);
-      	Object.Size := Object.Size+1;
+      	Object'(Size =>Object.Size+1,Values => Right.Values & Left);
 	return Right;
    end;
 
    procedure Add (Path: in out Object; P: Point) is
    begin
-      Insert (P : in Path.Points); --
+      Path.Values
    end;
 
    function Segment_Count (Path: in Object) return Natural is
@@ -40,8 +46,8 @@ package body Path is
 
    function Segment_Length (Path: in Object; Segment: in Positive) return Float is
          XLength: Float := Path.Values(Segment+1).X-Path.Values(Segment).X;
-         YLegnth: Float := Path.Values(Segment+1).Y-Path.Values(Segment).Y;
-         Length: Float := (XLength**2+YLength**2)**(1.0/2);
+         YLength: Float := Path.Values(Segment+1).Y-Path.Values(Segment).Y;
+         Length: Float := Sqrt(XLength**2+YLength**2);
    begin
          return Length;
    end;

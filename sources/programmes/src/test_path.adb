@@ -4,7 +4,7 @@ procedure Test_Path is
    P1,P2,P3,P4 : Point;
 
    Path1 : Object;
-   Points1 : Path.Points;
+   Points1 : Points := (P1,P2,P3,P4);
 
 begin
 
