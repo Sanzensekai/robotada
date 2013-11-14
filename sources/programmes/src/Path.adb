@@ -1,5 +1,8 @@
 with Ada.Text_IO;
+
 with Ada.Numerics.Generic_Elementary_Functions;
+
+
 with Ada.Strings.Unbounded;
 with Adagraph;
 
@@ -11,8 +14,8 @@ package body Path is
 
    function Value(From: Points) return Object is
    begin
-      return Object'(Size => 0, Values => Points); -- trouver quoi
-      						  --mettre pour Size
+      return Object'(Size   => From'Length, -- trouver quoi mettre pour Size
+                     Values => From);
    end;
 
    function "&" (Left: in Object; Right: in Object) return Object is
@@ -23,14 +26,13 @@ package body Path is
 
    function "&" (Left: in Object; Right: in Point) return Object is
    begin
-         Add(Left,Right);
-        Object.Size := Object.Size+1;
-	return Left;
+      return Object'(Size => Size+1,
+              Values => Left.Values + Right);
    end;
 
    function "&" (Left: in Point; Right: in Object) return Object is
    begin
-      	Object'(Size =>Object.Size+1,Values => Right.Values & Left);
+      	Object'(Size =>Size+1,Values => Right.Values & Left);
 	return Right;
    end;
 
