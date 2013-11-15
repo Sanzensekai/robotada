@@ -26,6 +26,7 @@ begin
    Points1(3):=P3;
    Points1(4):=P4;
 
+
    Path1.Value(Points1);
 
    Path1.Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
