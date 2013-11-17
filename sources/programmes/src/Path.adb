@@ -14,7 +14,7 @@ package body Path is
 
    function Value(From: Points) return Object is
    begin
-      return Object'(Size   => From'Length, -- trouver quoi mettre pour Size
+      return Object'(Size   => From'Length,
                      Values => From);
    end;
 
@@ -25,20 +25,32 @@ package body Path is
    end;
 
    function "&" (Left: in Object; Right: in Point) return Object is
+   temp : Points := Left.Values;
    begin
-      return Object'(Size => Size+1,
-              Values => Left.Values + Right);
+      temp(Left.Size+1) := Right;
+      return Object'(Size => Left.Size+1,
+              Values => temp);
    end;
 
    function "&" (Left: in Point; Right: in Object) return Object is
+   temp : Points := Right.Values;
    begin
-      	Object'(Size =>Size+1,Values => Right.Values & Left);
-	return Right;
+      temp(Right.Size+1) := Left;
+      return Object'(Size => Right.Size+1,
+              Values => temp);
    end;
 
    procedure Add (Path: in out Object; P: Point) is
    begin
-      Path.Values
+      for I in 1..Path.Size loop
+         if Path.Values(I).X /= 0.0
+         then
+            if Path.Values(I).Y /= 0.0
+            then
+               Path.Values(I) := P;
+            end if;
+         end if;
+      end loop;
    end;
 
    function Segment_Count (Path: in Object) return Natural is
@@ -49,15 +61,19 @@ package body Path is
    function Segment_Length (Path: in Object; Segment: in Positive) return Float is
          XLength: Float := Path.Values(Segment+1).X-Path.Values(Segment).X;
          YLength: Float := Path.Values(Segment+1).Y-Path.Values(Segment).Y;
-         Length: Float := Sqrt(XLength**2+YLength**2);
+         Length: Float := (XLength**2+YLength**2);
    begin
          return Length;
    end;
 
    procedure Draw (Path: in Object; Color: in Color_Type:= Light_Green) is
    begin
-      	for I in 1..Object.Size loop
-        Object.Values(I); -- Hard core de trouver un truc à mettre ici, j'y reviendrais demain.
+      	for I in 1..Path.Size loop
+         Adagraph.Draw_Line(X1  => Path.Values(I).X'Round(Integer),
+                            Y1  => Path.Values(I).Y,
+                            X2  => Path.Values(I+1).X,
+                            Y2  => Path.Values(I+1).Y,
+                            Hue => Color);
       	end loop;
    end;
 

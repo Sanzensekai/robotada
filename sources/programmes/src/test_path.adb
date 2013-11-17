@@ -1,10 +1,13 @@
 with Path; use Path;
+with Adagraph; use Adagraph;
 
 procedure Test_Path is
    P1,P2,P3,P4 : Point;
 
-   Path1 : Object;
-   Points1 : Points := (P1,P2,P3,P4);
+
+   Points1 : Points(1..4) := (P1,P2,P3,P4);
+
+   Path1 : Object := Object.Value(Points1);
 
 begin
 
@@ -26,9 +29,6 @@ begin
    Points1(3):=P3;
    Points1(4):=P4;
 
-
-   Path1.Value(Points1);
-
-   Path1.Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
+   Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
                                   --Ou pas. ^^'
 end;
