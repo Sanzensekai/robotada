@@ -12,6 +12,13 @@ use Adagraph;
 
 package body Path is
 
+   P1,P2,P3,P4 : Point;
+
+
+   Points1 : Points(1..4) := (P1,P2,P3,P4);
+
+   Path1 : Path.Object;
+
    function Value(From: Points) return Object is
    begin
       return Object'(Size   => From'Length,
@@ -69,10 +76,10 @@ package body Path is
    procedure Draw (Path: in Object; Color: in Color_Type:= Light_Green) is
    begin
       	for I in 1..Path.Size loop
-         Adagraph.Draw_Line(X1  => Path.Values(I).X'Round(Integer),
-                            Y1  => Path.Values(I).Y,
-                            X2  => Path.Values(I+1).X,
-                            Y2  => Path.Values(I+1).Y,
+         Adagraph.Draw_Line(X1  => Integer(Path.Values(I).X),
+                            Y1  => Integer(Path.Values(I).Y),
+                            X2  => Integer(Path.Values(I+1).X),
+                            Y2  => Integer(Path.Values(I+1).Y),
                             Hue => Color);
       	end loop;
    end;

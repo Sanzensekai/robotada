@@ -1,10 +1,18 @@
 with Adagraph;
 with Ada.Numerics;
 with Ada.Numerics.Elementary_Functions;
+with Path; use Path;
 
 use  Adagraph, Ada.Numerics, Ada.Numerics.Elementary_Functions;
 
 procedure Test is
+
+   P1,P2,P3,P4 : Point;
+
+
+   Points1 : Points(1..4) := (P1,P2,P3,P4);
+
+   Path1 : Path.Object;
 
    X_Max, Y_Max: Integer; X_Char, Y_Char: Integer;
 
@@ -68,7 +76,7 @@ begin
    Draw_Spiral(400, 300,  89.33, 260, Light_Cyan);
    Adagraph.Set_Antialiasing(False);
 
-   delay 10.0;
+   delay 1.0;
 
    for i in 150..430 loop
       Adagraph.Draw_Line(253, 298, 560, i, Magenta);
@@ -89,11 +97,33 @@ begin
           Adagraph.Draw_Circle (400, 300, 195 - 10 * Color_Type'Pos(C), C, No_Fill);
       end if;
       delay 0.05;
-    end loop;
+   end loop;
+
+
+   P1.X := 1.0;
+   P1.Y := 1.0;
+
+   P2.X := 2.0;
+   P2.Y := 2.0;
+
+   P3.X := 3.0;
+   P3.Y := 3.0;
+
+   P4.X := 400.0;
+   P4.Y := 300.0;
+
+
+   Points1(1):=P1;
+   Points1(2):=P2;
+   Points1(3):=P3;
+   Points1(4):=P4;
+
+   Path1 := Path.Value(Points1);
+   Draw(Path1,Light_Green); --
 
    delay 1.0;
 
-   Adagraph.Display_Text (290, 515, "TA GUEULE ENCULE!" , Hue => Green);
+   Adagraph.Display_Text (290, 515, "TA GUEULE ENCULE!" , Green);
 
    while not Adagraph.Key_Hit loop delay 0.1; end loop;
 

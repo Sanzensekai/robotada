@@ -7,7 +7,7 @@ procedure Test_Path is
 
    Points1 : Points(1..4) := (P1,P2,P3,P4);
 
-   Path1 : Object := Object.Value(Points1);
+   Path1 : Path.Object;
 
 begin
 
@@ -20,8 +20,8 @@ begin
    P3.X := 3.0;
    P3.Y := 3.0;
 
-   P4.X := 4.0;
-   P4.Y := 4.0;
+   P4.X := 400.0;
+   P4.Y := 300.0;
 
 
    Points1(1):=P1;
@@ -29,6 +29,7 @@ begin
    Points1(3):=P3;
    Points1(4):=P4;
 
+   Path1 := Path.Value(Points1);
    Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
                                   --Ou pas. ^^'
 end;
