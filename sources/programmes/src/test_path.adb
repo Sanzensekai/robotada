@@ -9,19 +9,26 @@ procedure Test_Path is
 
    Path1 : Path.Object;
 
+   X_Max, Y_Max: Integer; X_Char, Y_Char: Integer;
+
 begin
 
-   P1.X := 1.0;
-   P1.Y := 1.0;
+   Adagraph.Create_Sized_Graph_Window(800, 600, X_max, Y_Max, X_Char, Y_Char);
+   Adagraph.Set_Window_Title("Robot Ada - BECKLER - EL RHAZI");
+   Adagraph.Clear_Window;
 
-   P2.X := 2.0;
-   P2.Y := 2.0;
+   --Un joli Z !!!
+   P1.X := 150.0;
+   P1.Y := 100.0;
 
-   P3.X := 3.0;
-   P3.Y := 3.0;
+   P2.X := 450.0;
+   P2.Y := 100.0;
 
-   P4.X := 400.0;
-   P4.Y := 300.0;
+   P3.X := 150.0;
+   P3.Y := 400.0;
+
+   P4.X := 450.0;
+   P4.Y := 400.0;
 
 
    Points1(1):=P1;
@@ -30,6 +37,10 @@ begin
    Points1(4):=P4;
 
    Path1 := Path.Value(Points1);
-   Draw(Path1,Light_Green); -- Pas fini sur le coup ... déjà oublié quoi faire
-                                  --Ou pas. ^^'
+   Draw(Path1,Light_Green);
+
+   while not Adagraph.Key_Hit loop delay 0.1; end loop;
+
+   Adagraph.Destroy_Graph_Window;
+
 end;
