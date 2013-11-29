@@ -58,6 +58,7 @@ package body Path is
             end if;
          end if;
       end loop;
+      --Path & P;
    end;
 
    function Segment_Count (Path: in Object) return Natural is

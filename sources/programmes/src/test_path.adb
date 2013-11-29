@@ -1,5 +1,6 @@
 with Path; use Path;
 with Adagraph; use Adagraph;
+with Ada.Text_IO; use Ada.Text_IO;
 
 procedure Test_Path is
    P1,P2,P3,P4 : Point;
@@ -38,6 +39,12 @@ begin
 
    Path1 := Path.Value(Points1);
    Draw(Path1,Light_Green);
+
+   Adagraph.Draw_Circle(X      => 150,
+                        Y      => 100,
+                        Radius => 100,
+                        Hue    => Light_Green,
+                        Filled => No_Fill);
 
    while not Adagraph.Key_Hit loop delay 0.1; end loop;
 
