@@ -18,6 +18,8 @@ package Path is
    function Segment_Count (Path: in Object) return Natural;
    function Segment_Length (Path: in Object; Segment: in Positive) return Float;
    procedure Draw (Path: in Object; Color: in Color_Type := Light_Green);
+   function X() return Float;
+   function Y() return Float;
 
 private
    subtype Count is Natural range 0..50;

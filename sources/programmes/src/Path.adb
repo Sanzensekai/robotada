@@ -12,13 +12,6 @@ use Adagraph;
 
 package body Path is
 
-   P1,P2,P3,P4 : Point;
-
-
-   Points1 : Points(1..4) := (P1,P2,P3,P4);
-
-   Path1 : Path.Object;
-
    function Value(From: Points) return Object is
    begin
       return Object'(Size   => From'Length,
