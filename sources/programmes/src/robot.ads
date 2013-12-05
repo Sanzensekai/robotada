@@ -4,7 +4,7 @@ with AdaGraph.Color_Type;
 use AdaGraph.Color_Type;
 
 
-package Robot is
+package robot is
 
    type Object is private;
    task type Object (Color: Color_Type) is
@@ -12,4 +12,4 @@ package Robot is
         entry ShutDown();
    end Object;
 
-end Robot;
+end robot;
