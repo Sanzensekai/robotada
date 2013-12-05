@@ -1,12 +1,10 @@
 with Ada.Text_IO;
-
-with Ada.Numerics.Generic_Elementary_Functions;
-
-
+with Ada.Numerics.Elementary_Functions;
 with Ada.Strings.Unbounded;
 with Adagraph;
 
 use Ada.Text_IO;
+use Ada.Numerics.Elementary_Functions;
 use Ada.Strings.Unbounded;
 use Adagraph;
 
@@ -62,7 +60,7 @@ package body Path is
    function Segment_Length (Path: in Object; Segment: in Positive) return Float is
          XLength: Float := Path.Values(Segment+1).X-Path.Values(Segment).X;
          YLength: Float := Path.Values(Segment+1).Y-Path.Values(Segment).Y;
-         Length: Float := (XLength**2+YLength**2);
+         Length: Float := Ada.Numerics.Elementary_Functions.Sqrt(XLength**2+YLength**2);
    begin
          return Length;
    end;
