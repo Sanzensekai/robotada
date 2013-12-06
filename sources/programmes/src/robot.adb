@@ -9,8 +9,8 @@ package body robot is
 
    task body Object (Color: Color_Type)  is
       use Path;
-      pas : Float := 0.1 ;
-      dt : Float := 0.5 ;
+      pas : Float := 0.1;
+      dt : Float := 0.5;
       segmentCourant : Integer := 0;
       dkCourant : Float := 0.0;
       pointPrecedent = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
@@ -35,8 +35,8 @@ package body robot is
 
                      elsif (dkCourant < 1)
                      then
-                         dkCourant = dkCourant + pas;
-                         pointCourant = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
+                         dkCourant := dkCourant + pas;
+                         pointCourant := Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
                          procedure Draw (Path: in Object; Color: in Color_Type:= Light_Green) is
   				 begin
       					for I in 1..Path.Size loop
