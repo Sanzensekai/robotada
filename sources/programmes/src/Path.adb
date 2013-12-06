@@ -33,16 +33,7 @@ package body Path is
 
    procedure Add (Path: in out Object; P: Point) is
    begin
-      for I in 1..Path.Size loop
-         if Path.Values(I).X /= 0.0
-         then
-            if Path.Values(I).Y /= 0.0
-            then
-               Path.Values(I) := P;
-            end if;
-         end if;
-      end loop;
-      --Path := Path & P;
+      Path := Path & P;
    end;
 
    function Segment_Count (Path: in Object) return Natural is

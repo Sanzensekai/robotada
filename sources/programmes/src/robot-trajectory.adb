@@ -1,50 +1,52 @@
-with Robot;
-use Robot;
-
-private package body Robot.Trajectory is
 
 
-function Route() return Path is
+package body Robot.Trajectory is
+
+ Route : Path;
+function Route return Path is
 begin
-
+ return Route;
 end;
 
 procedure Open(Route : Path; Speed : Float) is
 begin
-
+ Route ;
 end;
 
-function X() return Float is
+function X return Float is
       XLength: Float := Route.Values(Segment+1).X-Route.Values(Segment).X;
       NewX: Float := Route.Values(Segment).X+K*XLength;
    begin
       return NewX;
 end;
 
-function Y() return Float is
+function Y return Float is
       YLength: Float := Route.Values(Segment+1).Y-Route.Values(Segment).Y;
       NewY: Float := Route.Values(Segment).Y+K*YLength;
 begin
       return NewY;
 end;
 
-procedure Next(dt : Float) is
+   procedure Next(dt : Float) is
+      pointCurrent := Point(Route.X(Route, Segment, dK), Route.
+      pointNext := Point(Route.X(Route, Segment, dK), Route.Y(Route, Segment, dK));
+   begin
+
+   end;
+
+function At_End return Boolean is
+ CurrentPoint := Point(Route.X(Route, Segment, dK), path.Y(segmentCourant, dK));
 begin
-       pointNext = Point(Route.X(Route, Segment, dkCourant), Route.Y(Route, Segment, dkCourant));
+  if ((CurrentPoint.X := Route.Values(Route.Size)).X) ^ (CurrentPoint.Y = Route.Values(Route.Size)).Y)) then
+    return true;
+  else
+    return false;
+  end if;
 end;
 
-function At_End() return Boolean is
- CurrentPoint = Point(Route.X(Route, Segment, dK), path.Y(segmentCourant, dK));
+procedure Close is
 begin
-  if I > Route.Values(Route.Size) loop
+ null;
+end Close;
 
-  end loop;
-  Ada.Integer_Text_IO.Put (Factorial);
-end;
-
-procedure Close() is
-begin
-
-end;
-
-end Trajectory;
+end Robot.Trajectory;

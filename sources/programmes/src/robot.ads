@@ -1,15 +1,10 @@
-with Adagrah; use Adagraph;
-with AdaGraph.Color_Type;
-
-use AdaGraph.Color_Type;
-
+with AdaGraph; use AdaGraph;
+with Path; use Path;
 
 package robot is
 
-   type Object is private;
-   task type Object (Color: Color_Type) is
-   	entry Follow(Road : Path);
-        entry ShutDown();
+   task type Object(Color: Color_Type) is
+   	entry Follow(Road : Path.Object);
+        entry ShutDown;
    end Object;
-
 end robot;
