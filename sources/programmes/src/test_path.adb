@@ -40,9 +40,9 @@ begin
    Path1 := Path.Value(Points1);
    Draw(Path1,Light_Green);
 
-   Adagraph.Draw_Circle(X      => Integer(150),
-                        Y      => Integer(100),
-                        Radius => Integer(100),
+   Adagraph.Draw_Circle(X      => 50,
+                        Y      => 50,
+                        Radius => 20,
                         Hue    => Light_Green,
                         Filled => AdaGraph.Fill);
 
