@@ -2,34 +2,46 @@ with Path, use Path;
 with robot, use robot;
 with Ada.Text_IO, Ada.Integer_Text_IO ;
 with Ada.Text_IO, Ada.Float_Text_IO ;
+use Ada.Text_IO, Ada.Integer_Text_IO ;
+use Ada.Text_IO, Ada.Float_Text_IO ;
 
 package body Site is
 
-   function Way_Out(To: Output_Places) return Ring_Places is
+   function Way_Out(O: Output_Places) return Ring_Places is
    begin
       null;
    end;
 
-   function Way_In(To: Input_Places) return Ring_Places is
+   function Way_In(I: Input_Places) return Ring_Places is
    begin
       null;
    end;
 
-   function Next (I: Place_Names) is
+   function Next (R: Ring_Places) is
    begin
       dkCourant = dkCourant + pas;
       pointCourant = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
    end;
 
-   function Previous (I: Place_Names) is
+   function Previous (R: Ring_Places) is
    begin
       dkCourant = dkCourant - pas;
       pointCourant = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
    end;
 
-   function Opposite() is
+   function Opposite(R: Ring_Places) is
    begin
       null;
+   end;
+
+   function Route(I1: Place_Names, O2: Output_Places) is
+   begin
+      if (I1)
+      	then Way_In(I1);
+      	if (Next(R1) /= Way_Out(O2)) and (opposite(R1) /= Way_Out(O2))
+      	then Previous(R1);
+        endif;
+      endif;
    end;
 
    protected body Safely is

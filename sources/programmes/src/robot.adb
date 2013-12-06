@@ -7,6 +7,8 @@ package body Robot is
 
    task body Object is
 
+   task body Object (Color: Color_Type)  is
+      use Path;
       pas : Float := 0.1 ;
       dt : Float := 0.5 ;
       segmentCourant : Integer := 0;
@@ -33,6 +35,7 @@ package body Robot is
 
                      elsif (dkCourant < 1)
                      then
+                         dkCourant := dkCourant + pas;
                          dkCourant++;
                          pointCourant := Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
                          procedure Draw (Path: in Object; Color: in Color_Type:= Light_Green) is
