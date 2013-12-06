@@ -46,8 +46,6 @@ package body Robot is
                         		end loop;
                         	end;
                      pointPrecedent := pointCourant;
-
-
                   end if;
                end Follow;
 

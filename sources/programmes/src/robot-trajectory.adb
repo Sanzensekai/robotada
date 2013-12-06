@@ -2,21 +2,27 @@
 
 package body Robot.Trajectory is
 
-   Route : Path.Object;
-   CurrentPoint : Path.Point;
+   Road : Path.Object;
    NextPoint : Path.Point;
    Speed : Float;
-   CurrentPoint : Path.Point:= Point(Route.X(Route, Segment, dK), path.Y(segmentCourant, dK));
+   Segment : Positive := 1;
+   SegmentLength : Float;
+   K : Float := 0.0;
+   CurrentX : Float := Path.X(Road, Segment, K);
+   CurrentY : Float := Path.Y(Road, Segment, K);
+   CurrentPoint : Path.Point;
+   CurrentPoint.X := CurrentX;
+   CurrentPoint.Y := CurrentY;
 
-function Route return Path is
+function Route return Path.Object is
 begin
- return Route;
+ return Road;
 end;
 
-procedure Open(Path : Path; Speed : Float) is
+procedure Open(Path: in Object; Vitesse: in Float) is
 begin
-      Route := Path;
-      Speed := Speed;
+      Road := Path;
+      Speed := Vitesse;
 end;
 
 function X return Float is
@@ -33,21 +39,25 @@ begin
       return NewY;
 end;
 
-   procedure Next(dt : Float) is
+   procedure Next(dt : in Float) is
    begin
+      SegmentLength := Segment_Length(Path    => Route,
+                                      Segment => Segment);
       CurrentPoint := Point(Route.X(Route, Segment, dK), Route.Y(Route, Segment, dK));
       dK := dK+((Speed/SegmentLength)*dt);
       nextPoint := Point(Route.X(Route, Segment, dK), Route.Y(Route, Segment, dK));
-
    end;
 
 function At_End return Boolean is
 begin
-  if ((CurrentPoint.X = Route.Values(Route.Size)).X) ^ (CurrentPoint.Y = Route.Values(Route.Size)).Y)) then
+      if (CurrentPoint.X = Route.Values(Route.Size).X)  then
+        if (CurrentPoint.Y = Route.Values(Route.Size).Y) then
     return true;
   else
     return false;
+	end if;
   end if;
+
 end;
 
 procedure Close is
