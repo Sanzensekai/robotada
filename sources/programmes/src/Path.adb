@@ -18,25 +18,18 @@ package body Path is
 
    function "&" (Left: in Object; Right: in Object) return Object is
    begin
-      return Object'(Size => Left.Size+Right.Size,
-                     Values => Left.Values & Right.Values);
-   end;
+      return Object'(Size => Left.Size + Right.Size, Values => Left.Values & Right.Values);
+   end "&";
 
    function "&" (Left: in Object; Right: in Point) return Object is
-   temp : Points := Left.Values;
    begin
-      temp(Left.Size+1) := Right;
-      return Object'(Size => Left.Size+1,
-              Values => temp);
-   end;
+      return Object'(Size => Left.Size+1, Values => Left.Values & Right);
+   end "&";
 
    function "&" (Left: in Point; Right: in Object) return Object is
-   temp : Points := Right.Values;
    begin
-      temp(Right.Size+1) := Left;
-      return Object'(Size => Right.Size+1,
-              Values => temp);
-   end;
+      return Object'(Size => Right.Size+1, Values => Left & Right.Values);
+   end "&";
 
    procedure Add (Path: in out Object; P: Point) is
    begin
@@ -49,7 +42,7 @@ package body Path is
             end if;
          end if;
       end loop;
-      --Path & P;
+      --Path := Path & P;
    end;
 
    function Segment_Count (Path: in Object) return Natural is

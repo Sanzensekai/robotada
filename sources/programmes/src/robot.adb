@@ -1,3 +1,4 @@
+with Object;
 with Path;
 with Ada.Text_IO, Ada.Integer_Text_IO ;
 with Ada.Text_IO, Ada.Float_Text_IO ;
@@ -5,16 +6,16 @@ with Ada.Text_IO, Ada.Float_Text_IO ;
 use Ada.Text_IO, Ada.Integer_Text_IO ;
 use Ada.Text_IO, Ada.Float_Text_IO ;
 
-package body robot is
+package body Robot is
 
    task body Object (Color: Color_Type)  is
       use Path;
       pas : Float := 0.1 ;
       dt : Float := 0.5 ;
       segmentCourant : Integer := 0;
-      dkCourant : Float := 0.0;
-      pointPrecedent = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
-      pointCourant = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
+      dkCourant : Integer := 0;
+      pointPrecedent = Point(path.X(Road, segmentCourant, dkCourant), path.Y(Road segmentCourant, dkCourant));
+      pointCourant = Point(path.X(Road, segmentCourant, dkCourant), path.Y(Road, segmentCourant, dkCourant));
       doWeContinue : boolean := true;
 
    begin
@@ -35,7 +36,7 @@ package body robot is
 
                      elsif (dkCourant < 1)
                      then
-                         dkCourant = dkCourant + pas;
+                         dkCourant++;
                          pointCourant = Point(path.X(segmentCourant, dkCourant), path.Y(segmentCourant, dkCourant));
                          procedure Draw (Path: in Object; Color: in Color_Type:= Light_Green) is
   				 begin
@@ -48,13 +49,14 @@ package body robot is
                         end loop;
                         end;
                      pointPrecedent := pointCourant;
+
+
                   end if;
                end Follow;
 
                accept Shutdown() do
                   doWeContinue = false;
-               end Shutdown;
 
             end loop;
    end Object;
-end robot;
+end Robot;

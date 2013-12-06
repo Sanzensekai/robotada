@@ -28,10 +28,12 @@ begin
       return NewY;
 end;
 
-procedure Next(dt : Float) is
-begin
-       pointNext = Point(Route.X(Route, Segment, dkCourant), Route.Y(Route, Segment, dkCourant));
-end;
+   procedure Next(dt : Float) is
+      pointCurrent = Point(Route.X(Route, Segment, dK), Route.
+      pointNext = Point(Route.X(Route, Segment, dK), Route.Y(Route, Segment, dK));
+   begin
+
+   end;
 
 function At_End() return Boolean is
  CurrentPoint = Point(Route.X(Route, Segment, dK), path.Y(segmentCourant, dK));
