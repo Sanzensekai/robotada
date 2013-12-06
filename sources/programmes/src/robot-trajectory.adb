@@ -1,46 +1,58 @@
-with Robot;
-use Robot;
-
-private package body Robot.Trajectory is
 
 
-function Route() return Path is
+package body Robot.Trajectory is
+
+   Route : Path.Object;
+   CurrentPoint : Path.Point;
+   NextPoint : Path.Point;
+   Speed : Float;
+   CurrentPoint : Path.Point:= Point(Route.X(Route, Segment, dK), path.Y(segmentCourant, dK));
+
+function Route return Path is
 begin
-
+ return Route;
 end;
 
-procedure Open(Route : Path; Speed : Float) is
+procedure Open(Path : Path; Speed : Float) is
 begin
-
+      Route := Path;
+      Speed := Speed;
 end;
 
-function X() return Float is
+function X return Float is
       XLength: Float := Route.Values(Segment+1).X-Route.Values(Segment).X;
       NewX: Float := Route.Values(Segment).X+K*XLength;
    begin
       return NewX;
 end;
 
-function Y() return Float is
+function Y return Float is
       YLength: Float := Route.Values(Segment+1).Y-Route.Values(Segment).Y;
       NewY: Float := Route.Values(Segment).Y+K*YLength;
 begin
       return NewY;
 end;
 
-procedure Next(dt : Float) is
+   procedure Next(dt : Float) is
+   begin
+      CurrentPoint := Point(Route.X(Route, Segment, dK), Route.Y(Route, Segment, dK));
+      dK := dK+((Speed/SegmentLength)*dt);
+      nextPoint := Point(Route.X(Route, Segment, dK), Route.Y(Route, Segment, dK));
+
+   end;
+
+function At_End return Boolean is
 begin
-       pointNext = Point(Route.X(Route, Segment, dkCourant), Route.Y(Route, Segment, dkCourant));
+  if ((CurrentPoint.X = Route.Values(Route.Size)).X) ^ (CurrentPoint.Y = Route.Values(Route.Size)).Y)) then
+    return true;
+  else
+    return false;
+  end if;
 end;
 
-function At_End() return Boolean is
+procedure Close is
 begin
+ null;
+end Close;
 
-end;
-
-procedure Close() is
-begin
-
-end;
-
-end Trajectory;
+end Robot.Trajectory;

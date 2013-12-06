@@ -18,38 +18,22 @@ package body Path is
 
    function "&" (Left: in Object; Right: in Object) return Object is
    begin
-      return Object'(Size => Left.Size+Right.Size,
-                     Values => Left.Values & Right.Values);
-   end;
+      return Object'(Size => Left.Size + Right.Size, Values => Left.Values & Right.Values);
+   end "&";
 
    function "&" (Left: in Object; Right: in Point) return Object is
-   temp : Points := Left.Values;
    begin
-      temp(Left.Size+1) := Right;
-      return Object'(Size => Left.Size+1,
-              Values => temp);
-   end;
+      return Object'(Size => Left.Size+1, Values => Left.Values & Right);
+   end "&";
 
    function "&" (Left: in Point; Right: in Object) return Object is
-   temp : Points := Right.Values;
    begin
-      temp(Right.Size+1) := Left;
-      return Object'(Size => Right.Size+1,
-              Values => temp);
-   end;
+      return Object'(Size => Right.Size+1, Values => Left & Right.Values);
+   end "&";
 
    procedure Add (Path: in out Object; P: Point) is
    begin
-      for I in 1..Path.Size loop
-         if Path.Values(I).X /= 0.0
-         then
-            if Path.Values(I).Y /= 0.0
-            then
-               Path.Values(I) := P;
-            end if;
-         end if;
-      end loop;
-      --Path & P;
+      Path := Path & P;
    end;
 
    function Segment_Count (Path: in Object) return Natural is
@@ -67,7 +51,7 @@ package body Path is
 
    procedure Draw (Path: in Object; Color: in Color_Type:= Light_Green) is
    begin
-      	for I in 1..Path.Size loop
+      	for I in 1..Path.Size-1 loop
          Adagraph.Draw_Line(X1  => Integer(Path.Values(I).X),
                             Y1  => Integer(Path.Values(I).Y),
                             X2  => Integer(Path.Values(I+1).X),

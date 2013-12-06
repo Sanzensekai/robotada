@@ -40,14 +40,13 @@ begin
    Path1 := Path.Value(Points1);
    Draw(Path1,Light_Green);
 
-   Adagraph.Draw_Circle(X      => 150,
-                        Y      => 100,
-                        Radius => 100,
+   Adagraph.Draw_Circle(X      => 50,
+                        Y      => 50,
+                        Radius => 20,
                         Hue    => Light_Green,
-                        Filled => No_Fill);
+                        Filled => AdaGraph.Fill);
 
    while not Adagraph.Key_Hit loop delay 0.1; end loop;
 
-   Adagraph.Destroy_Graph_Window;
 
 end;
