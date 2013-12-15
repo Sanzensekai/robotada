@@ -12,9 +12,9 @@ project Robotada is
       "fifo-cells_pooling.ads", "fifo-enum.adb", "fifo-enum.ads", "fifo.adb", "fifo.ads", "filter.adb", "filter.ads", "fuzzy_logic-test.adb", "fuzzy_logic.adb", "fuzzy_logic.ads", "gate.adb", "gate.ads", "hello_html.adb", 
       "hello_universe.adb", "histogram.adb", "histogram.ads", "image.ads", "image_storage.ads", "is_repetition.adb", "mailbox.adb", "mailbox.ads", "main.adb", "min_max_extension.adb", "min_max_extension.ads", "min_max_sensor.adb", 
       "min_max_sensor.ads", "monitor.adb", "monitor.ads", "monoid_signature.ads", "parking_configuration.adb", "parking_configuration.ads", "parking_manager.adb", "parking_manager.ads", "Path.adb", "Path.ads", "port.adb", "port.ads", "power.adb", 
-      "power.ads", "printable.ads", "real_min_max_sensor.ads", "real_sensor.adb", "real_sensor.ads", "recursive_fibonacci.adb", "robot-trajectory.adb", "robot-trajectory.ads", "robot.adb", "robot.ads", "roshambo.adb", "roshambo.ads", 
-      "sensor.adb", "sensor.ads", "sensors.adb", "sensors.ads", "shared_image_storage.adb", "shared_image_storage.ads", "shared_io.adb", "shared_io.ads", "site.adb", "site.ads", "stack-restrict.adb", "stack-restrict.ads", "stack.adb", "stack.ads", 
-      "test.adb", "test_mailbox.adb", "test_path.adb", "test_robot.adb", "test_stack.adb");
+      "power.ads", "printable.ads", "real_min_max_sensor.ads", "real_sensor.adb", "real_sensor.ads", "recursive_fibonacci.adb", "robot-trajectory.adb", "robot-trajectory.ads", "robot.adb", "robot.ads", "robot2.adb", "roshambo.adb", 
+      "roshambo.ads", "sensor.adb", "sensor.ads", "sensors.adb", "sensors.ads", "shared_image_storage.adb", "shared_image_storage.ads", "shared_io.adb", "shared_io.ads", "site.adb", "site.ads", "stack-restrict.adb", "stack-restrict.ads", 
+      "stack.adb", "stack.ads", "test.adb", "test_mailbox.adb", "test_path.adb", "test_robot.adb", "test_stack.adb");
 
    package Builder is
       for Default_Switches ("ada") use ("-gnat2012");

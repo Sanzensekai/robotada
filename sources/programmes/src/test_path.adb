@@ -46,6 +46,11 @@ begin
                         Hue    => Light_Green,
                         Filled => AdaGraph.Fill);
 
+   delay 0.5;
+   Adagraph.Clear_Window;
+
+
+
    while not Adagraph.Key_Hit loop delay 0.1; end loop;
 
 
