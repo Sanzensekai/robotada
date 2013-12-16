@@ -5,16 +5,16 @@ with AdaGraph; use AdaGraph;
 package Site is
 
 type Place_Names is (I1, I2, I3, I4, I5, I6);
-subtype Ring_Places is Place_Names range R1, R2, R3, R4, R5, R6;
-subtype Output_Places is Place_Names range O1, O2, O3, O4, O5, O6;
+type Ring_Places is (R1, R2, R3, R4, R5, R6);
+subtype Output_Places is (O1, O2, O3, O4, O5, O6);
 type Object is private;
 
 function Way_Out(To: Output_Places) return Ring_Places;
 function Way_In(From: Place_Names) return Ring_Places;
-function Next(I: Place_Names);
-function Previous(R: Ring_Places);
-function Opposite(R: Ring_Places);
-function Route(I: Place_Names, O: Output_Places);
+function Next(I: Place_Names) return Place_Names;
+function Previous(R: Ring_Places) return Place_Names;
+function Opposite(R: Ring_Places) return Place_Names;
+function Route(I: Place_Names; O: Output_Places) return Place_Names;
 
 protected Safely is
 
@@ -25,4 +25,8 @@ protected Safely is
 
 end;
 
+private
+type Object is record
+      Values: Points (1..Size);
+   end record;
 end Site;

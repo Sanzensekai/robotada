@@ -13,67 +13,64 @@ begin
  return T.Route;
 end;
 
-procedure Open(T : in Trajectory.Object ; Road : in Path.Object; Speed : in Float) is
-
+procedure Open(T: in out Trajectory.Object; From: Site.Input_Places; To: Site.Output_Places; Speed: in Float) is
+   Trajectory_Places : Site.Places_Path.Places := Site.Places_Path.Values(Site.Places_Path.Open(From => From, To => To));
 begin
-      Route(T => T) => Road;
-      T.Speed => Speed;
-end;
+   T.Route := Path.Null_Path;
+   T.Ending := False;
+   T.Segment := 1;
+   T.K := 0.0;
+   T.Speed := Speed;
+
+for P in Trajectory_Places'First..Trajectory_Places'Last loop
+         Path.Add(T.Route, Site.Get_Point(Trajectory_Places(P)));
+      end loop;
+   end Open;
 
 function X( T : in Robot.Trajectory.Object) return Float is
-      XLength: Float := Y(Path    => T.Route,
-                          Segment => T.Segment,
-                          K       => T.K);
-      NewX: Float := T.Route(T.Segment).X+T.K*XLength;
    begin
-      return NewX;
+      return Path.X(Path => T.Route,
+                    Segment => T.Segment,
+                    K => T.K);
 end;
 
 function Y( T : in Robot.Trajectory.Object) return Float is
-      YLength: Float := Y(Path    => T.Route,
-                          Segment => T.Segment,
-                          K       => T.K);
-      NewX: Float := T.Route(T.Segment).Y+T.K*YLength;
    begin
-      return NewY;
+      return Path.Y(Path => T.Route,
+                    Segment => T.Segment,
+                    K => T.K);
 end;
 
-   procedure Next(T : in Trajectory.Object ; dt : in Float) is
+function Point_XY(T: in Robot.Trajectory.Object) return Path.Point is
+begin
+      return Path.Point'(X => Trajectory.X(T),
+                         Y => Trajectory.Y(T));
+end Point_XY;
+
+procedure Next(T: in out Trajectory.Object; dt: in Float) is
+      dK: Float := T.Speed/Path.Segment_Length(Path => T.Route, Segment => T.Segment)*dt;
    begin
-      dK := dK+((Speed/SegmentLength)*dt);
-      SegmentLength := Segment_Length(Path    => T.Route,
-                                      Segment => T.Segment);
-      CurrentPoint := Path.Point(X(Path    => T.Route,
-                              Segment => T.Segment,
-                                   K       => T.K),
-                                 Y(Path    => T.Route,
-                                   Segment => T.Segment,
-                                   K       => T.K));
-      nextPoint := Path.Point(X(Path    => T.Route,
-                                Segment => T.Segment,
-                                K       => T.K+dK),
-                              Y(Path    => T.Route,
-                                Segment => T.Segment,
-                                K       => T.K+dK));
-   end;
+   if not T.Ending then
+      T.K := T.K + dK;
+      if T.K>1.0 then
+         T.K := 0.0;
+         if (T.Segment+1)>Path.Segment_Count(Path => T.Route) then
+            T.Ending := True;
+         else
+            T.Segment := T.Segment + 1;
+         end if;
+      end if;
+   end if;
+end Next;
 
 function At_End( T : in Robot.Trajectory.Object) return Boolean is
 begin
-  if (CurrentPoint = T.Route'Last) then
-    return true;
-  else
-    return false;
-  end if;
-
+  return T.Ending;
 end;
 
-procedure Close( T : in Robot.Trajectory.Object) is
+procedure Close is
 begin
-          if (At_End(T => T) = True) then
           null;
-          else
-          null;
-          end if;
 end Close;
 
 end Robot.Trajectory;
