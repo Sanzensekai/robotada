@@ -5,11 +5,12 @@ with Ada.Real_Time;
 
 with Ada.Text_IO, Ada.Integer_Text_IO ;
 with Ada.Text_IO, Ada.Float_Text_IO ;
+with Ada.Calendar; use Ada.Calendar;
 
 package body Robot is
 
    task body Object is
-      Next: Ada.Calendar.Time := Ada.Real_Time.Clock;
+      Next: Ada.Calendar.Time := Clock;
       State: State_Type := Ready;
    begin
       select

@@ -6,15 +6,7 @@ project Robotada is
    for Source_Dirs use ("src");
    for Object_Dir use "obj";
    for Main use ("main.adb");
-   for Source_Files use ("action.ads", "active_image_storage.adb", "active_image_storage.ads", "aircraft_attitude.adb", "aircraft_attitude.ads", "automaton.adb", "automaton.ads", "basic_image_storage.adb", "basic_image_storage.ads", "belief.adb", 
-      "belief.ads", "chess.ads", "city.adb", "city.ads", "collapse_stack.adb", "collapse_stack.ads", "compose.adb", "compose.ads", "connectors.adb", "connectors.ads", "country.adb", "country.ads", "date_mixin.adb", "date_mixin.ads", 
-      "dice_game-user_feedback.adb", "dice_game.adb", "dispatcher.adb", "dispatcher.ads", "fibonacci_sequence-visit.adb", "fibonacci_sequence-visit.ads", "fibonacci_sequence.adb", "fibonacci_sequence.ads", "fifo-cells_pooling.adb", 
-      "fifo-cells_pooling.ads", "fifo-enum.adb", "fifo-enum.ads", "fifo.adb", "fifo.ads", "filter.adb", "filter.ads", "fuzzy_logic-test.adb", "fuzzy_logic.adb", "fuzzy_logic.ads", "gate.adb", "gate.ads", "hello_html.adb", 
-      "hello_universe.adb", "histogram.adb", "histogram.ads", "image.ads", "image_storage.ads", "is_repetition.adb", "mailbox.adb", "mailbox.ads", "main.adb", "min_max_extension.adb", "min_max_extension.ads", "min_max_sensor.adb", 
-      "min_max_sensor.ads", "monitor.adb", "monitor.ads", "monoid_signature.ads", "parking_configuration.adb", "parking_configuration.ads", "parking_manager.adb", "parking_manager.ads", "Path.adb", "Path.ads", "port.adb", "port.ads", "power.adb", 
-      "power.ads", "printable.ads", "real_min_max_sensor.ads", "real_sensor.adb", "real_sensor.ads", "recursive_fibonacci.adb", "robot-trajectory.adb", "robot-trajectory.ads", "robot.adb", "robot.ads", "robot2.adb", "roshambo.adb", 
-      "roshambo.ads", "sensor.adb", "sensor.ads", "sensors.adb", "sensors.ads", "shared_image_storage.adb", "shared_image_storage.ads", "shared_io.adb", "shared_io.ads", "site.adb", "site.ads", "stack-restrict.adb", "stack-restrict.ads", 
-      "stack.adb", "stack.ads", "test.adb", "test_mailbox.adb", "test_path.adb", "test_robot.adb", "test_stack.adb");
+   for Source_Files use ("main.adb", "Path.adb", "Path.ads", "robot-trajectory.adb", "robot-trajectory.ads", "robot.adb", "robot.ads", "robot2.adb", "site.adb", "site.ads", "test.adb", "test_path.adb", "test_robot.adb");
 
    package Builder is
       for Default_Switches ("ada") use ("-gnat2012");

@@ -13,8 +13,7 @@ package body Robot is
          dt : Float := 0.5 ;
          segmentCourant : Integer := 0;
          kCourant : Integer := 0;
-         pointPrecedent := Point(path.X(Road, segmentCourant, kCourant), path.Y(Road segmentCourant, kCourant));
-         pointCourant := Point(path.X(Road, segmentCourant, kCourant), path.Y(Road, segmentCourant, kCourant));
+
       begin
          loop
             delay dt;

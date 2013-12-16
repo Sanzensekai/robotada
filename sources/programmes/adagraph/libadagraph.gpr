@@ -1,9 +1,12 @@
 library project Libadagraph is
 
-   for Source_Dirs  use ("src/**");
+   for Source_Dirs use ("src/**");
    for Library_Name use "adagraph";
-   for Library_Dir  use "lib";
+   for Library_Dir use "lib";
    for Externally_Built use "True";
+   for Source_Files use ("adagraph.ads", "basic_blinker.adb", "basic_blinker.ads", "basic_blinker_control-adaptator.adb", "basic_blinker_control-adaptator.ads", "basic_blinker_control-listener.adb", 
+      "basic_blinker_control-listener.ads", "basic_blinker_control-selectors.ads", "basic_blinker_control.adb", "basic_blinker_control.ads", "remote_adagraph-proxy.ads", "remote_adagraph-selectors.ads", "remote_adagraph.ads", 
+      "test_adagraph.adb", "test_basic_blinker.adb");
 
 end Libadagraph;
 

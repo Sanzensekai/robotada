@@ -5,7 +5,6 @@ with Ada.Text_IO; use Ada.Text_IO;
 procedure Test_Path is
    P1,P2,P3,P4 : Point;
 
-
    Points1 : Points(1..4) := (P1,P2,P3,P4);
 
    Path1 : Path.Object;
@@ -46,10 +45,9 @@ begin
                         Hue    => Light_Green,
                         Filled => AdaGraph.Fill);
 
-   delay 0.5;
+   delay 10.0;
+
    Adagraph.Clear_Window;
-
-
 
    while not Adagraph.Key_Hit loop delay 0.1; end loop;
 
